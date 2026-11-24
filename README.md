@@ -74,5 +74,89 @@ Through this phase, I learned how to secure an AWS root account using MFA, confi
 I also learned the importance of protecting privileged accounts and monitoring cloud expenditure to help manage unexpected costs.
 
 ---
+## Phase 2: AWS IAM Users and Groups Creation
 
+### Objective
+
+The aim of this phase was to create IAM users and groups in AWS and organise access based on different job roles.
+
+### Step 1: Check Existing IAM Users and Groups
+
+I first checked my AWS account to see whether any IAM users or groups already existed.
+
+**Findings:**
+- No existing IAM users were found.
+- No existing IAM groups were found.
+
+This gave me a clean starting point for creating my IAM environment.
+
+**Screenshots:**
+
+![Initial IAM users](screenshots/01-initial-iam-users.png)
+
+![Initial IAM groups](screenshots/02-initial-iam-groups.png)
+
+### Step 2: Create IAM Groups
+
+I created two IAM groups for different job roles.
+
+| Group name | Purpose |
+|---|---|
+| Developers | For users carrying out development tasks. |
+| SecurityAuditors | For users carrying out security auditing tasks. |
+
+Creating groups makes it easier to manage permissions for different users.
+
+**Screenshot:**
+
+![IAM groups created](screenshots/03-iam-groups-created.png)
+
+### Step 3: Create IAM Users
+
+I created two test IAM users to represent different job roles.
+
+| Username | Role |
+|---|---|
+| test-developer | Developer |
+| test-security-auditor | Security Auditor |
+
+These accounts will help me test how different users access AWS resources.
+
+**Screenshots:**
+
+![Test developer created](screenshots/04-test-developer-created.png)
+
+![Both IAM users created](screenshots/05-iam-users-and-group-counts.png)
+
+### Step 4: Assign Users to Groups
+
+I assigned each test user to the appropriate IAM group.
+
+- test-developer was assigned to Developers.
+- test-security-auditor was assigned to SecurityAuditors.
+
+The IAM users page showed that each user belonged to one group.
+
+This makes it easier to manage user permissions through groups instead of assigning permissions individually.
+
+### Security Considerations
+
+- Created separate accounts for different job roles.
+- Used IAM groups to organise users.
+- Avoided giving test users unnecessary administrative access.
+- Identified MFA as an additional security measure to implement and verify.
+
+### Outcome
+
+Successfully created two IAM groups and two test IAM users.
+
+Both users were assigned to their respective groups.
+
+This completed the initial IAM user and group setup.
+
+**Project Status:** Completed – Phase 2.
+
+### Next Phase
+
+The next phase will focus on creating IAM policies and assigning permissions to control what each user can access in AWS.
 
