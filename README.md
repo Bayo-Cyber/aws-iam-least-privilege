@@ -164,6 +164,12 @@ This confirms that the DeveloperLeastPrivilegePolicy allows users to view EC2 in
 
 **Test 3: EC2 DescribeTags**
 
+This test checks whether the Developers group can view EC2 instance tags. The policy simulator shows that the action is allowed because the DeveloperLeastPrivilegePolicy grants permission to describe EC2 resources.
+
+This confirms that developers can view EC2 resource information while being restricted from terminating instances.
+
+**Result:** Access allowed, as expected.
+
 ![EC2 DescribeTags allowed](screenshots/07-ec2-describe-tags.png)
 
 **Test 4: S3 ListAllMyBuckets**
