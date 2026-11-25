@@ -139,6 +139,8 @@ I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors gr
  
 **Developers group**
 
+I attached the custom `DeveloperLeastPrivilegePolicy` to the Developers group. This policy provides development-related permissions while following the principle of least privilege, helping to prevent unnecessary access to AWS resources.
+
 ![Developers policy attached](screenshots/04-developer-policy-attached.png)
 
 ### Stage 6: Test SecurityAuditors Permissions
