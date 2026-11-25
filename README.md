@@ -147,6 +147,10 @@ I attached the custom `DeveloperLeastPrivilegePolicy` to the Developers group. T
 
 **Test 1: EC2 DescribeInstances**
 
+I used the AWS IAM Policy Simulator to test whether the Developers group could view EC2 instance information.
+
+The simulation returned an **Allowed** result, confirming that the `DeveloperLeastPrivilegePolicy` grants permission to perform the `ec2:DescribeInstances` action.
+
 ![EC2 DescribeInstances allowed](screenshots/05-ec2-describe-instances.png)
 
 **Test 2: EC2 TerminateInstances**
