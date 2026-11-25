@@ -162,4 +162,16 @@ Creating groups makes it easier to manage permissions for different users.
 ### Stage 7: Review the Final Policy Simulator Results
 
 ![Final SecurityAuditors Policy Simulator results](screenshots/12-final-simulator-results.png)
+## Lessons Learned
 
+During Phase 3, I learned how to manage AWS IAM permissions and apply the principle of least privilege.
+
+- **IAM users and groups:** I learned how to organise users into groups and assign permissions based on their responsibilities.
+- **Custom IAM policies:** I learned how to create custom policies that grant users access to specific AWS services.
+- **Least privilege:** I learned why users should only receive the permissions they need to perform their tasks.
+- **Testing permissions:** I learned how to check whether users can access the resources they are allowed to use and are denied access to restricted resources.
+- **Security best practices:** I learned why it is important to avoid unnecessary administrative permissions and protect privileged accounts.
+
+### Key Takeaway
+
+I learned that AWS IAM is an important part of cloud security. Properly managing users, groups, and permissions helps reduce the risk of unauthorised access to AWS resources.
