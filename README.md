@@ -241,7 +241,7 @@ This confirms that the SecurityAuditors group can view CloudTrail information wi
 
 ### Stage 7: Review the Final Policy Simulator Results
 
-![Final SecurityAuditors Policy Simulator results](screenshots/15-final-simulator-results.png)
+![Final SecurityAuditors Policy Simulator results](screenshots/12-final-simulator-results.png)
 ## Lessons Learned
 
 During Phase 3, I learned how to manage AWS IAM permissions and apply the principle of least privilege.
