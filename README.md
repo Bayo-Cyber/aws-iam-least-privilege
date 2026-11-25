@@ -126,7 +126,7 @@ Creating groups makes it easier to manage permissions for different users.
 **SecurityAuditors group**
 
 ![SecurityAuditors policy attached](screenshots/03-attached%20permisions%20Security%20Auditors.png)
-
+ 
 **Developers group**
 
 ![Developers policy attached](screenshots/04-developer-policy-attached.png)
