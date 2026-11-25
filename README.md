@@ -9,7 +9,7 @@ Secure my AWS account before implementing IAM security controls.
 ### Security Controls Implemented
 
 | Security Control | Status |
-|---|---|
+|---|---| 
 | AWS account access verified | Completed |
 | Root account MFA | Completed |
 | Monthly AWS budget | Completed |
