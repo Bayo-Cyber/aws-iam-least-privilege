@@ -186,6 +186,14 @@ This confirms that developers can view the available S3 buckets without being gr
 
 **Test 5: S3 DeleteObject**
 
+This test checks whether the Developers group can delete objects stored in S3 buckets.
+
+The policy simulator shows that the action is denied because the DeveloperLeastPrivilegePolicy does not grant permission to delete S3 objects.
+
+This confirms that developers can view S3 bucket information without having permission to delete stored objects.
+
+**Result:** Access denied, as expected.
+
 ![S3 DeleteObject denied](screenshots/09-s3-delete-object.png)
 
 **Test 6: CloudTrail Read-Only Access**
