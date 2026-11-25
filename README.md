@@ -155,6 +155,11 @@ The simulation returned an **Allowed** result, confirming that the `DeveloperLea
 
 **Test 2: EC2 TerminateInstances**
 
+This test checks whether the Developers group can terminate EC2 instances. The policy simulator shows that the action is denied because the group does not have permission to terminate instances.
+
+This confirms that the DeveloperLeastPrivilegePolicy allows users to view EC2 instance information while restricting actions that could affect running resources.
+
+**Result:** Access denied, as expected.
 ![EC2 TerminateInstances denied](screenshots/06-ec2-terminate-instances.png)
 
 **Test 3: EC2 DescribeTags**
