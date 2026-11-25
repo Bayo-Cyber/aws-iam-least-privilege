@@ -137,13 +137,15 @@ allowing only the permissions required for development tasks.
 
 ![Developer Least Privilege Policy](screenshots/13-developer-least-privilege-policy.png)
 
-**SecurityAuditors policy**
-
-![SecurityAuditors policy created](screenshots/01-securityauditor-policy-created.png)
 
 **Developers policy**
 
 ![Developers policy created](screenshots/02-developer-policy-created.png)
+
+**SecurityAuditors policy**
+
+![SecurityAuditors policy created](screenshots/01-securityauditor-policy-created.png)
+
 
 ### Stage 5: Assign Permissions to IAM Groups
 
