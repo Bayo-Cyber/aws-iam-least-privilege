@@ -203,20 +203,7 @@ This test confirms that the Developers group is denied access to cloudtrail:GetT
 This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
 ![CloudTrail GetTrailStatus denied](screenshots/11-Cloudtrail-get-trail-status.png)
 
-**Test 6: Verify S3 DeleteObject Access Restrictions** 
-
-This test checks whether the Developers group can delete objects stored in S3 buckets.
-
-The policy simulator shows that the action is denied because the DeveloperLeastPrivilegePolicy does not grant permission to delete S3 objects.
-
-This confirms that developers can view S3 bucket information without having permission to delete stored objects.
-
-**Result:** Access denied, as expected.
-
-This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
-![CloudTrail GetTrailStatus allowed](screenshots/10-Cloudtrail-get-trail-status.png)
-
-**Test 7: S3 DeleteObject**
+### Test 6: Verify S3 DeleteObject Access Restrictions
 
 This test checks whether the Developers group can delete objects stored in S3 buckets.
 
@@ -228,6 +215,18 @@ This confirms that developers can view S3 bucket information without having perm
 
 ![S3 DeleteObject denied](screenshots/09-s3-delete-object.png)
 
+
+### Test 7: Verify CloudTrail Read-Only Access
+
+This test checks whether the SecurityAuditors group can view AWS CloudTrail configuration.
+
+The policy simulator shows that the cloudtrail:DescribeTrails action is allowed.
+
+This confirms that the SecurityAuditors group can view CloudTrail information without having permission to modify or delete resources.
+
+**Result:** Access allowed, as expected.
+
+![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
 
 **SecurityAuditors group**
 I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors group. This policy allows members of the group to view selected AWS configuration information without granting unnecessary permissions to modify resources.
