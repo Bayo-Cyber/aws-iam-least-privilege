@@ -111,193 +111,42 @@ Creating groups makes it easier to manage permissions for different users.
 
 ![IAM Groups Created](screenshots/03-iam-groups-created.png)
 
-### Step 3: Create IAM Users
-
-I created two test IAM users to represent different job roles.
-
-| Username | Role |
-|---|---|
-| test-developer | Developer |
-| test-security-auditor | Security Auditor |
-
-These accounts will help me test how different users access AWS resources.
-
-**Evidence:**
-
-![Test Developer Created](screenshots/04-test-developer-created.png)
-
-![Both IAM Users Created](screenshots/05-iam-users-created-and-group-counts.png)
-
-### Step 4: Assign Users to Groups
-
-I assigned each test user to the appropriate IAM group.
-
-- test-developer was assigned to Developers.
-- test-security-auditor was assigned to SecurityAuditors.
-
-The IAM users page showed that each user belonged to one group.
-
-This makes it easier to manage permissions through groups instead of assigning permissions individually.
-
-### Security Considerations
-
-- Created separate accounts for different job roles.
-- Used IAM groups to organise users.
-- Avoided giving test users unnecessary administrative access.
-- Identified MFA as an additional security measure to implement and verify.
-
-### Outcome
-
-Successfully created two IAM groups and two test IAM users.
-
-Both users were assigned to their respective groups.
-
-This completed the initial IAM user and group setup.
-
-**Project Status:** Completed – Phase 2.
 ## Phase 3: Custom IAM Policies and Permission Testing
 
-### Stage 4: Create Custom IAM Policies
+### 3.6 Testing CloudTrail Permissions
 
-**Objective:** Create custom IAM policies that provide the correct permissions to the Developers and SecurityAuditors groups.
+In this step, I tested whether the Developers group could access CloudTrail information using the AWS IAM Policy Simulator.
 
-I created two custom IAM policies:
+The purpose of this test was to check whether the `DeveloperLeastPrivilegePolicy` allows or denies access to CloudTrail.
 
-- `DeveloperLeastPrivilegePolicy`
-- `SecurityAuditorReadOnlyPolicy`
+#### Step 1: Test the CloudTrail Permission
 
-The policies were designed to provide the permissions required by each group while avoiding unnecessary access.
+I selected the Developers group in the IAM Policy Simulator and tested the following action:
 
-#### Evidence: Custom IAM Policy Creation
+- **AWS Service:** CloudTrail
+- **Action:** `GetTrailStatus`
+- **Resource:** `*`
 
-**Screenshot 1: SecurityAuditors custom policy**
+#### Step 2: Review the Simulation Result
 
-<!-- Attach your screenshot showing the creation of SecurityAuditorReadOnlyPolicy here. -->
+The simulation returned a **Denied** result.
 
-**Screenshot 2: Developers custom policy**
+The permission was denied because no applicable policy statement granted access to the `cloudtrail:GetTrailStatus` action.
 
-<!-- Attach your screenshot showing the creation of DeveloperLeastPrivilegePolicy here. -->
+This shows that the Developers group does not have permission to check the status of CloudTrail trails.
 
-### Stage 5: Assign Permissions to IAM Groups
+#### Screenshot 6: CloudTrail Permission Test
 
-After creating the policies, I attached them to the appropriate IAM groups.
+The screenshot below shows the IAM Policy Simulator result for the CloudTrail permission test.
 
-| IAM Group | Attached Policy |
-|---|---|
-| Developers | DeveloperLeastPrivilegePolicy |
-| SecurityAuditors | SecurityAuditorReadOnlyPolicy |
+![CloudTrail GetTrailStatus permission denied](screenshots/CloudtrailGetStatus.png)
 
-This approach allows permissions to be managed through IAM groups instead of assigning permissions individually to each user.
+**Screenshot filename:** `CloudtrailGetStatus.png`
 
-#### Evidence: Policy Assignment
+#### Result
 
-<!-- Attach your screenshot showing SecurityAuditorReadOnlyPolicy attached to the SecurityAuditors group here. -->
+The test confirmed that the Developers group cannot access the CloudTrail trail status using the current IAM policy.
 
-<!-- Attach your screenshot showing DeveloperLeastPrivilegePolicy attached to the Developers group here. -->
+This is an example of the principle of least privilege, where users are only given the permissions required for their work.
 
-### Stage 6: Test SecurityAuditors Permissions
-
-I used the AWS IAM Policy Simulator to test the permissions assigned to the SecurityAuditors group.
-
-The purpose was to confirm that the group could view AWS configuration information but could not perform actions such as terminating EC2 instances or deleting S3 objects.
-
-#### Test 1: EC2 DescribeInstances
-
-**Action:** `ec2:DescribeInstances`
-
-**Expected result:** Allowed
-
-**Actual result:** Allowed
-
-The SecurityAuditors group was able to view EC2 instance information.
-
-<!-- Attach test-01-ec2-describe-instances.png here. -->
-
-#### Test 2: EC2 TerminateInstances
-
-**Action:** `ec2:TerminateInstances`
-
-**Expected result:** Denied
-
-**Actual result:** Denied
-
-The SecurityAuditors group was not allowed to terminate EC2 instances.
-
-<!-- Attach test-02-ec2-terminate-instances.png here. -->
-
-#### Test 3: EC2 DescribeTags
-
-**Action:** `ec2:DescribeTags`
-
-**Expected result:** Allowed
-
-**Actual result:** Allowed
-
-The group was able to view EC2 instance tags.
-
-<!-- Attach test-03-ec2-describe-tags.png here. -->
-
-#### Test 4: S3 ListAllMyBuckets
-
-**Action:** `s3:ListAllMyBuckets`
-
-**Expected result:** Allowed
-
-**Actual result:** Allowed
-
-The group was able to list the available S3 buckets.
-
-<!-- Attach test-04-s3-list-buckets.png here. -->
-
-#### Test 5: S3 DeleteObject
-
-**Action:** `s3:DeleteObject`
-
-**Expected result:** Denied
-
-**Actual result:** Denied
-
-The group was not allowed to delete S3 objects.
-
-<!-- Attach test-05-s3-delete-object.png here. -->
-
-#### Test 6: CloudTrail Read-Only Access
-
-The SecurityAuditors group was tested for the following actions:
-
-- `cloudtrail:DescribeTrails`
-- `cloudtrail:GetTrailStatus`
-
-**Expected result:** Allowed
-
-**Actual result:** Allowed
-
-The group was able to view CloudTrail configuration and trail status information.
-
-<!-- Attach your CloudTrail permission test screenshot here. -->
-
-### Stage 7: Review the Final Policy Simulator Results
-
-The final simulation confirmed that the SecurityAuditors group had the intended permissions.
-
-The group was allowed to perform read-only actions and denied permission to perform the tested destructive actions.
-
-The denied actions were classified as implicit denies because no applicable policy statement granted permission for those actions.
-
-#### Evidence: Final Policy Simulator Results
-
-<!-- Attach your final SecurityAuditors policy simulator screenshot here. -->
-
-### Security Principles Applied
-
-- **Least privilege:** Only the required permissions were granted.
-- **Group-based access control:** Permissions were assigned to IAM groups.
-- **Read-only access:** SecurityAuditors could view configuration information without unnecessary modification permissions.
-- **Permission testing:** The IAM Policy Simulator was used to test allowed and denied actions.
-
-### Project Status
-
-Completed the custom IAM policy creation, policy assignment and SecurityAuditors permission testing.
-
-The results demonstrate how IAM policies can be used to control access and reduce unnecessary permissions in AWS.
-
+**Security finding:** The `DeveloperLeastPrivilegePolicy` does not grant CloudTrail trail-status access to the Developers group.
