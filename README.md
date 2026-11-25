@@ -155,7 +155,149 @@ Both users were assigned to their respective groups.
 This completed the initial IAM user and group setup.
 
 **Project Status:** Completed – Phase 2.
+## Phase 3: Custom IAM Policies and Permission Testing
 
-### Next Phase
+### Stage 4: Create Custom IAM Policies
 
-The next phase will focus on creating IAM policies and assigning permissions to control what each user can access in AWS.
+**Objective:** Create custom IAM policies that provide the correct permissions to the Developers and SecurityAuditors groups.
+
+I created two custom IAM policies:
+
+- `DeveloperLeastPrivilegePolicy`
+- `SecurityAuditorReadOnlyPolicy`
+
+The policies were designed to provide the permissions required by each group while avoiding unnecessary access.
+
+#### Evidence: Custom IAM Policy Creation
+
+**Screenshot 1: SecurityAuditors custom policy**
+
+<!-- Attach your screenshot showing the creation of SecurityAuditorReadOnlyPolicy here. -->
+
+**Screenshot 2: Developers custom policy**
+
+<!-- Attach your screenshot showing the creation of DeveloperLeastPrivilegePolicy here. -->
+
+### Stage 5: Assign Permissions to IAM Groups
+
+After creating the policies, I attached them to the appropriate IAM groups.
+
+| IAM Group | Attached Policy |
+|---|---|
+| Developers | DeveloperLeastPrivilegePolicy |
+| SecurityAuditors | SecurityAuditorReadOnlyPolicy |
+
+This approach allows permissions to be managed through IAM groups instead of assigning permissions individually to each user.
+
+#### Evidence: Policy Assignment
+
+<!-- Attach your screenshot showing SecurityAuditorReadOnlyPolicy attached to the SecurityAuditors group here. -->
+
+<!-- Attach your screenshot showing DeveloperLeastPrivilegePolicy attached to the Developers group here. -->
+
+### Stage 6: Test SecurityAuditors Permissions
+
+I used the AWS IAM Policy Simulator to test the permissions assigned to the SecurityAuditors group.
+
+The purpose was to confirm that the group could view AWS configuration information but could not perform actions such as terminating EC2 instances or deleting S3 objects.
+
+#### Test 1: EC2 DescribeInstances
+
+**Action:** `ec2:DescribeInstances`
+
+**Expected result:** Allowed
+
+**Actual result:** Allowed
+
+The SecurityAuditors group was able to view EC2 instance information.
+
+<!-- Attach test-01-ec2-describe-instances.png here. -->
+
+#### Test 2: EC2 TerminateInstances
+
+**Action:** `ec2:TerminateInstances`
+
+**Expected result:** Denied
+
+**Actual result:** Denied
+
+The SecurityAuditors group was not allowed to terminate EC2 instances.
+
+<!-- Attach test-02-ec2-terminate-instances.png here. -->
+
+#### Test 3: EC2 DescribeTags
+
+**Action:** `ec2:DescribeTags`
+
+**Expected result:** Allowed
+
+**Actual result:** Allowed
+
+The group was able to view EC2 instance tags.
+
+<!-- Attach test-03-ec2-describe-tags.png here. -->
+
+#### Test 4: S3 ListAllMyBuckets
+
+**Action:** `s3:ListAllMyBuckets`
+
+**Expected result:** Allowed
+
+**Actual result:** Allowed
+
+The group was able to list the available S3 buckets.
+
+<!-- Attach test-04-s3-list-buckets.png here. -->
+
+#### Test 5: S3 DeleteObject
+
+**Action:** `s3:DeleteObject`
+
+**Expected result:** Denied
+
+**Actual result:** Denied
+
+The group was not allowed to delete S3 objects.
+
+<!-- Attach test-05-s3-delete-object.png here. -->
+
+#### Test 6: CloudTrail Read-Only Access
+
+The SecurityAuditors group was tested for the following actions:
+
+- `cloudtrail:DescribeTrails`
+- `cloudtrail:GetTrailStatus`
+
+**Expected result:** Allowed
+
+**Actual result:** Allowed
+
+The group was able to view CloudTrail configuration and trail status information.
+
+<!-- Attach your CloudTrail permission test screenshot here. -->
+
+### Stage 7: Review the Final Policy Simulator Results
+
+The final simulation confirmed that the SecurityAuditors group had the intended permissions.
+
+The group was allowed to perform read-only actions and denied permission to perform the tested destructive actions.
+
+The denied actions were classified as implicit denies because no applicable policy statement granted permission for those actions.
+
+#### Evidence: Final Policy Simulator Results
+
+<!-- Attach your final SecurityAuditors policy simulator screenshot here. -->
+
+### Security Principles Applied
+
+- **Least privilege:** Only the required permissions were granted.
+- **Group-based access control:** Permissions were assigned to IAM groups.
+- **Read-only access:** SecurityAuditors could view configuration information without unnecessary modification permissions.
+- **Permission testing:** The IAM Policy Simulator was used to test allowed and denied actions.
+
+### Project Status
+
+Completed the custom IAM policy creation, policy assignment and SecurityAuditors permission testing.
+
+The results demonstrate how IAM policies can be used to control access and reduce unnecessary permissions in AWS.
+
