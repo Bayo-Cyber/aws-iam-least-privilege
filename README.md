@@ -131,6 +131,8 @@ Through this project, I gained practical experience in managing AWS identities, 
 
 ### Stage 5: Assign Permissions to IAM Groups
 
+I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors group. This policy allows members of the group to view selected AWS configuration information without granting unnecessary permissions to modify resources.
+
 **SecurityAuditors group**
 
 ![SecurityAuditors policy attached](screenshots/03-attached%20permisions%20%20Security%20Auditors.png)
