@@ -231,7 +231,7 @@ This confirms that the SecurityAuditors group can view CloudTrail information wi
 **SecurityAuditors group**
 I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors group. This policy allows members of the group to view selected AWS configuration information without granting unnecessary permissions to modify resources.
 
-![SecurityAuditors policy attached](screenshots/12-attached%20permisions%20%20Security%20Auditors.png)
+![SecurityAuditors policy attached](screenshots/11-attached%20permisions%20%20Security%20Auditors.png)
 
 ### Step 6: Review the SecurityAuditor Read-Only Policy
 
