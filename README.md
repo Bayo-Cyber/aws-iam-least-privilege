@@ -113,6 +113,14 @@ Creating groups makes it easier to manage permissions for different users.
 
 ### Stage 4: Create Custom IAM Policies
 
+## Project Objective
+
+The objective of this phase was to understand and implement AWS Identity and Access Management (IAM) by creating IAM users and groups, assigning permissions through IAM policies, and applying the principle of least privilege.
+
+I aimed to learn how to organise users based on their responsibilities, control access to AWS resources, and provide only the permissions required for each role.
+
+Through this project, I gained practical experience in managing AWS identities, creating custom IAM policies, and understanding how permissions help protect cloud resources from unauthorised access.
+
 **SecurityAuditors policy**
 
 ![SecurityAuditors policy created](screenshots/01-securityauditor-policy-created.png)
