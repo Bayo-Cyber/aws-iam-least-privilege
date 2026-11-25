@@ -201,7 +201,7 @@ This confirms that developers can view the available S3 buckets without being gr
 This test confirms that the Developers group is denied access to cloudtrail:GetTrailStatus. The permission is not included in the DeveloperLeastPrivilegePolicy, so the action is denied.
 
 This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
-![CloudTrail GetTrailStatus allowed](screenshots/09-Cloudtrail-get-trail-status.png)
+![CloudTrail GetTrailStatus denied](screenshots/11-Cloudtrail-get-trail-status.png)
 
 **Test 6: Verify CloudTrail Access Restrictions** 
 
