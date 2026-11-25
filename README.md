@@ -157,7 +157,7 @@ Creating groups makes it easier to manage permissions for different users.
 
 ![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
 
-![CloudTrail GetTrailStatus allowed](screenshots/11-cloudtrail-get-trail-status.png)
+![CloudTrail GetTrailStatus allowed](screenshots/11-Cloudtrail-get-trail-status.png)
 
 ### Stage 7: Review the Final Policy Simulator Results
 
