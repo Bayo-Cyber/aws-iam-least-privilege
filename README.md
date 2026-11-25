@@ -241,7 +241,7 @@ The policy does not grant permission to modify or delete these resources.
 
 This helps apply the principle of least privilege by providing read-only access for security auditing activities.
 
-![SecurityAuditor Read-Only Policy](screenshots/13-security-auditor-read-only-policy.png)
+![SecurityAuditor Read-Only Policy](screenshots/11-security-auditor-read-only-policy.png)
 
 **Test 7: CloudTrail Read-Only Access**
 
