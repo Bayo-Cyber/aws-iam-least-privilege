@@ -121,6 +121,22 @@ I aimed to learn how to organise users based on their responsibilities, control 
 
 Through this project, I gained practical experience in managing AWS identities, creating custom IAM policies, and understanding how permissions help protect cloud resources from unauthorised access.
 
+### Step 4: Review the Developer Least Privilege Policy
+
+The DeveloperLeastPrivilegePolicy defines the permissions 
+available to the Developers group.
+
+The policy allows developers to view EC2 instance 
+information, view EC2 tags, and list S3 buckets.
+
+It does not grant permission to terminate EC2 instances, 
+delete S3 objects, or access CloudTrail information.
+
+This helps apply the principle of least privilege by 
+allowing only the permissions required for development tasks.
+
+![Developer Least Privilege Policy](screenshots/13-developer-least-privilege-policy.png)
+
 **SecurityAuditors policy**
 
 ![SecurityAuditors policy created](screenshots/01-securityauditor-policy-created.png)
