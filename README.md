@@ -111,3 +111,55 @@ Creating groups makes it easier to manage permissions for different users.
 
 ![IAM Groups Created](screenshots/03-iam-groups-created.png)
 
+### Stage 4: Create Custom IAM Policies
+
+**SecurityAuditors policy**
+
+![SecurityAuditors policy created](screenshots/01-securityauditor-policy-created.png)
+
+**Developers policy**
+
+![Developers policy created](screenshots/02-developer-policy-created.png)
+
+### Stage 5: Assign Permissions to IAM Groups
+
+**SecurityAuditors group**
+
+![SecurityAuditors policy attached](screenshots/03-securityauditor-policy-attached.png)
+
+**Developers group**
+
+![Developers policy attached](screenshots/04-developer-policy-attached.png)
+
+### Stage 6: Test SecurityAuditors Permissions
+
+**Test 1: EC2 DescribeInstances**
+
+![EC2 DescribeInstances allowed](screenshots/05-ec2-describe-instances.png)
+
+**Test 2: EC2 TerminateInstances**
+
+![EC2 TerminateInstances denied](screenshots/06-ec2-terminate-instances.png)
+
+**Test 3: EC2 DescribeTags**
+
+![EC2 DescribeTags allowed](screenshots/07-ec2-describe-tags.png)
+
+**Test 4: S3 ListAllMyBuckets**
+
+![S3 ListAllMyBuckets allowed](screenshots/08-s3-list-buckets.png)
+
+**Test 5: S3 DeleteObject**
+
+![S3 DeleteObject denied](screenshots/09-s3-delete-object.png)
+
+**Test 6: CloudTrail Read-Only Access**
+
+![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
+
+![CloudTrail GetTrailStatus allowed](screenshots/11-cloudtrail-get-trail-status.png)
+
+### Stage 7: Review the Final Policy Simulator Results
+
+![Final SecurityAuditors Policy Simulator results](screenshots/12-final-simulator-results.png)
+
