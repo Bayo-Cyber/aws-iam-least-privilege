@@ -222,7 +222,8 @@ The policy does not grant permission to modify or delete these resources.
 
 This helps apply the principle of least privilege by providing read-only access for security auditing activities.
 
-![SecurityAuditor Read-Only Policy](screenshots/11-security-auditor-read-only-policy.png)
+![SecurityAuditor Read-Only Policy](screenshots/10-security-auditor-read-only-policy.png)
+
 ### Test 7: Verify CloudTrail Read-Only Access
 
 This test checks whether the SecurityAuditors group can view AWS CloudTrail configuration.
