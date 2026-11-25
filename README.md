@@ -174,6 +174,14 @@ This confirms that developers can view EC2 resource information while being rest
 
 **Test 4: S3 ListAllMyBuckets**
 
+This test checks whether the Developers group can view a list of S3 buckets in the AWS account.
+
+The policy simulator shows that the action is allowed because the DeveloperLeastPrivilegePolicy grants permission to list S3 buckets.
+
+This confirms that developers can view the available S3 buckets without being granted full access to their contents.
+
+**Result:** Access allowed, as expected.
+
 ![S3 ListAllMyBuckets allowed](screenshots/08-s3-list-buckets.png)
 
 **Test 5: S3 DeleteObject**
