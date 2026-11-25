@@ -205,7 +205,13 @@ This demonstrates the principle of least privilege by preventing developers from
 
 **Test 6: Verify S3 DeleteObject Access Restrictions** 
 
-This test confirms that the Developers group is denied access to cloudtrail:GetTrailStatus. The permission is not included in the DeveloperLeastPrivilegePolicy, so the action is denied.
+This test checks whether the Developers group can delete objects stored in S3 buckets.
+
+The policy simulator shows that the action is denied because the DeveloperLeastPrivilegePolicy does not grant permission to delete S3 objects.
+
+This confirms that developers can view S3 bucket information without having permission to delete stored objects.
+
+**Result:** Access denied, as expected.
 
 This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
 ![CloudTrail GetTrailStatus allowed](screenshots/10-Cloudtrail-get-trail-status.png)
@@ -220,7 +226,7 @@ This confirms that developers can view S3 bucket information without having perm
 
 **Result:** Access denied, as expected.
 
-![S3 DeleteObject denied](screenshots/11-s3-delete-object.png)
+![S3 DeleteObject denied](screenshots/09-s3-delete-object.png)
 
 
 **SecurityAuditors group**
