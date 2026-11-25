@@ -198,6 +198,10 @@ This confirms that developers can view S3 bucket information without having perm
 
 **Test 6: CloudTrail Read-Only Access**
 
+This test confirms that the SecurityAuditors group can view AWS CloudTrail configuration without making changes.
+
+The policy simulator shows that the `cloudtrail:DescribeTrails` action is allowed, demonstrating read-only access to CloudTrail information.
+
 ![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
 
 ![CloudTrail GetTrailStatus allowed](screenshots/11-Cloudtrail-get-trail-status.png)
