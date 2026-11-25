@@ -204,6 +204,11 @@ The policy simulator shows that the `cloudtrail:DescribeTrails` action is allowe
 
 ![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
 
+**Test 7: Verify CloudTrail Access Restrictions** 
+
+This test confirms that the Developers group is denied access to cloudtrail:GetTrailStatus. The permission is not included in the DeveloperLeastPrivilegePolicy, so the action is denied.
+
+This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
 ![CloudTrail GetTrailStatus allowed](screenshots/11-Cloudtrail-get-trail-status.png)
 
 ### Stage 7: Review the Final Policy Simulator Results
