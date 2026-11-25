@@ -148,12 +148,6 @@ allowing only the permissions required for development tasks.
 
 
 ### Stage 5: Assign Permissions to IAM Groups
-
-I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors group. This policy allows members of the group to view selected AWS configuration information without granting unnecessary permissions to modify resources.
-
-**SecurityAuditors group**
-
-![SecurityAuditors policy attached](screenshots/03-attached%20permisions%20%20Security%20Auditors.png)
  
 **Developers group**
 
@@ -161,7 +155,6 @@ I attached the custom `DeveloperLeastPrivilegePolicy` to the Developers group. T
 
 ![Developers policy attached](screenshots/04-developer-policy-attached.png)
 
-### Stage 6: Test SecurityAuditors Permissions
 
 **Test 1: EC2 DescribeInstances**
 
@@ -178,6 +171,7 @@ This test checks whether the Developers group can terminate EC2 instances. The p
 This confirms that the DeveloperLeastPrivilegePolicy allows users to view EC2 instance information while restricting actions that could affect running resources.
 
 **Result:** Access denied, as expected.
+
 ![EC2 TerminateInstances denied](screenshots/06-ec2-terminate-instances.png)
 
 **Test 3: EC2 DescribeTags**
@@ -202,6 +196,13 @@ This confirms that developers can view the available S3 buckets without being gr
 
 ![S3 ListAllMyBuckets allowed](screenshots/08-s3-list-buckets.png)
 
+**Test 7: Verify CloudTrail Access Restrictions** 
+
+This test confirms that the Developers group is denied access to cloudtrail:GetTrailStatus. The permission is not included in the DeveloperLeastPrivilegePolicy, so the action is denied.
+
+This demonstrates the principle of least privilege by preventing developers from accessing CloudTrail information they do not need.
+![CloudTrail GetTrailStatus allowed](screenshots/09-Cloudtrail-get-trail-status.png)
+
 **Test 5: S3 DeleteObject**
 
 This test checks whether the Developers group can delete objects stored in S3 buckets.
@@ -212,7 +213,15 @@ This confirms that developers can view S3 bucket information without having perm
 
 **Result:** Access denied, as expected.
 
-![S3 DeleteObject denied](screenshots/09-s3-delete-object.png)
+![S3 DeleteObject denied](screenshots/10-s3-delete-object.png)
+
+
+I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors group. This policy allows members of the group to view selected AWS configuration information without granting unnecessary permissions to modify resources.
+
+**SecurityAuditors group**
+
+![SecurityAuditors policy attached](screenshots/11-attached%20permisions%20%20Security%20Auditors.png)
+
 
 **Test 6: CloudTrail Read-Only Access**
 
@@ -220,7 +229,7 @@ This test confirms that the SecurityAuditors group can view AWS CloudTrail confi
 
 The policy simulator shows that the `cloudtrail:DescribeTrails` action is allowed, demonstrating read-only access to CloudTrail information.
 
-![CloudTrail DescribeTrails allowed](screenshots/10-cloudtrail-describe-trails.png)
+![CloudTrail DescribeTrails allowed](screenshots/11-cloudtrail-describe-trails.png)
 
 **Test 7: Verify CloudTrail Access Restrictions** 
 
