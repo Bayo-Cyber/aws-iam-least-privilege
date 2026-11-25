@@ -241,15 +241,6 @@ I attached the custom `SecurityAuditorReadOnlyPolicy` to the SecurityAuditors gr
 
 ![SecurityAuditors policy attached](screenshots/11-attached%20permisions%20%20Security%20Auditors.png)
 
-### Step 6: Review the SecurityAuditor Read-Only Policy
-
-The SecurityAuditorReadOnlyPolicy allows users to view EC2 configuration, S3 bucket information, and CloudTrail configuration.
-
-The policy does not grant permission to modify or delete these resources.
-
-This helps apply the principle of least privilege by providing read-only access for security auditing activities.
-
-![SecurityAuditor Read-Only Policy](screenshots/11-security-auditor-read-only-policy.png)
 
 **Test 7: CloudTrail Read-Only Access**
 
